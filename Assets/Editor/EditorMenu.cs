@@ -9,7 +9,7 @@ public class EditorMenu : MonoBehaviour
     static GameObject[] spawner;
     static GameObject[] allNodes;
 
-    static LayerMask spawnMask = LayerMask.GetMask("Wall") | LayerMask.GetMask("Floor");
+    //static LayerMask spawnMask = LayerMask.GetMask("Wall") | LayerMask.GetMask("Floor");
 
     // Create a sub menu item called Spawn Floor Nodes under the menu item Grid Generation
     [MenuItem("Grid Generation/Spawn Floor Nodes", priority = 0)]
@@ -133,7 +133,7 @@ public class EditorMenu : MonoBehaviour
 
         RaycastHit hit;
 
-        //LayerMask spawnMask = LayerMask.GetMask("Wall") | LayerMask.GetMask("Floor");
+        LayerMask spawnMask = LayerMask.GetMask("Floor", "Wall");
 
         // Load the Pathnode prefab from the Resources folder
         pathNode = Resources.Load("Pathnode") as GameObject;
@@ -153,7 +153,7 @@ public class EditorMenu : MonoBehaviour
             for (float j = triggerExtents.z * -2; j <= 0; j += 3)
             {
                 // Raycast down from the current location
-                if (Physics.Raycast(trigger.position + triggerExtents + new Vector3(i, 0, j), Vector3.down, out hit, spawnMask))
+                if (Physics.Raycast(trigger.position + triggerExtents + new Vector3(i, 0, j), Vector3.down, out hit, Mathf.Infinity, spawnMask))
                 {
                     // If the raycast hits the floor object then spawn a node at that location
                     if (hit.transform.tag == "Floor")
@@ -258,6 +258,9 @@ public class EditorMenu : MonoBehaviour
     {
         allNodes = GameObject.FindGameObjectsWithTag("Pathnode");
         RaycastHit hit;
+
+        LayerMask spawnMask = LayerMask.GetMask("Wall");
+
         foreach (GameObject node in allNodes)
         {
             node.GetComponent<Pathnode>().ClearConnections();
@@ -269,7 +272,7 @@ public class EditorMenu : MonoBehaviour
                 {
                     if (Vector3.Distance(node.transform.position, target.transform.position) <= 3.1f)
                     {
-                        if (!Physics.SphereCast(new Ray(node.transform.position + new Vector3(0, 1, 0), target.transform.position - node.transform.position), 0.4f, out hit, Vector3.Distance(node.transform.position, target.transform.position), spawnMask))
+                        if (!Physics.SphereCast(new Ray(node.transform.position + new Vector3(0, 0.5f, 0), target.transform.position - node.transform.position), 0.4f, out hit, Vector3.Distance(node.transform.position, target.transform.position), spawnMask))
                         {
                             node.GetComponent<Pathnode>().AddConnection(target);
                         }

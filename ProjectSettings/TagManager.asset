@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - SpawnTrigger
   - Wall
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Wall
   - Floor
-  - 
+  - Door
   - 
   - 
   - 
