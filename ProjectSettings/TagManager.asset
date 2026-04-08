@@ -9,6 +9,10 @@ TagManager:
   - SpawnTrigger
   - Wall
   - Door
+  - Selectable
+  - Ground
+  - Ally
+  - Enemy
   layers:
   - Default
   - TransparentFX

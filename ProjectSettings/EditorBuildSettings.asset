@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Pathfinding.unity
-    guid: 771e2584e5260c844ba9d71a0f041a27
+    path: Assets/RTS/NavMesh.unity
+    guid: e27bd3a3a7da14a4ebf7d54fc92ff5fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
