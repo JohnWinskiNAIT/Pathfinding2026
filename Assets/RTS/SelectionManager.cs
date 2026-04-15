@@ -44,6 +44,7 @@ public class SelectionManager : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Ground")
                 {
+                    Debug.Log("Ground");
                     foreach (NavMeshAI agent in selectedAI)
                     {
                         agent.SetTarget(hit.point);
@@ -51,6 +52,7 @@ public class SelectionManager : MonoBehaviour
                 }
                 else if (hit.transform.tag == "Enemy")
                 {
+                    Debug.Log("Enemy");
                     foreach (NavMeshAI agent in selectedAI)
                     {
                         agent.SetTarget(hit.transform.gameObject);

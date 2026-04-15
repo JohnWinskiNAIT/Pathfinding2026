@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
             currentHealth = minHealth;
         }
 
-        SendMessageUpwards("CharacterDamaged", origin);
+        SendMessageUpwards("CharacterDamaged", origin, SendMessageOptions.DontRequireReceiver);
     }
 
     public void HealDamage(float damage, GameObject origin)
