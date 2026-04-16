@@ -109,18 +109,24 @@ public class NavMeshAI : MonoBehaviour
 
     public void SetTarget(Vector3 location)
     {
-        targetLocation = location;
-        target = null;
-        agent.stoppingDistance = 0;
-        followingCommand = true;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death") == false)
+        {
+            targetLocation = location;
+            target = null;
+            agent.stoppingDistance = 0;
+            followingCommand = true;
+        }
     }
 
     public void SetTarget(GameObject targetObject)
     {
-        target = targetObject;
-        targetLocation = targetObject.transform.position;
-        agent.stoppingDistance = 3;
-        followingCommand = true;
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Death") == false)
+        {
+            target = targetObject;
+            targetLocation = targetObject.transform.position;
+            agent.stoppingDistance = 3;
+            followingCommand = true;
+        }
     }
 
     private void OnTriggerStay(Collider other)
